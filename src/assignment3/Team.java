@@ -1,6 +1,8 @@
 package assignment3;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Team {
    private ArrayList<TeamMember> members = new ArrayList<>();
@@ -12,7 +14,7 @@ public class Team {
      */
     public void addTeamMember(TeamMember m) {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        members.add(m);
     }
     
     // Nothing to do here!
@@ -32,7 +34,10 @@ public class Team {
      */
     public boolean removeTeamMember(TeamMember m){
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        if (members.remove(m) == true) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -57,7 +62,14 @@ public class Team {
      */
     public ArrayList<TeamMember> retriveMembersByRole(String role) {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+
+        ArrayList<TeamMember> byRole = new ArrayList<>();
+        for (TeamMember teamMember : members) {
+            if (teamMember.getRole() == role) {
+                byRole.add(teamMember);
+            }
+        }
+        return byRole;
     }
 
     /**
@@ -66,7 +78,14 @@ public class Team {
      */
     public void sortByNameAsc() {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        Comparator<TeamMember> nameComparator = new Comparator<TeamMember>() {
+            @Override
+            public int compare(TeamMember o1, TeamMember o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
+        Collections.sort(members, nameComparator);
+
     }
 
     /**
@@ -76,7 +95,12 @@ public class Team {
      */
     public void sortByRoleDesc() {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        Comparator<TeamMember> roleComparator = new Comparator<TeamMember>() {
+            @Override
+            public int compare(TeamMember o1, TeamMember o2) {
+                return o2.getRole().compareTo(o1.getRole());
+            }
+        };
+        Collections.sort(members, roleComparator);
     }
-    
 }

@@ -9,6 +9,10 @@ public class FlipCoin {
      */
     public int flipCoin() {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        if (Math.random() < 0.5){
+            return 0;
+        } else {
+            return 1;
+        }
     }
 }

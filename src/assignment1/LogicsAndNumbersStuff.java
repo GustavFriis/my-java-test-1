@@ -1,5 +1,8 @@
 package assignment1;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LogicsAndNumbersStuff {
 
     /**
@@ -12,7 +15,8 @@ public class LogicsAndNumbersStuff {
     public int diffMultipliedByC(int a, int b, int c)
     {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        int result = (a-b)*c;
+        return result;
     }
 
     /**
@@ -24,8 +28,12 @@ public class LogicsAndNumbersStuff {
     public boolean canYouStayInBed(boolean weekday, boolean vacation)
     {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        if (!weekday || vacation){
+            return true;
+        }
+        return false;
     }
+
 
     /**
      * This method returns the sum of all the given numbers
@@ -35,7 +43,12 @@ public class LogicsAndNumbersStuff {
     public int sumOfNumbers(int[] numbers)
     {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        int[] arr = numbers;
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum = sum + arr[i];
+        }
+        return sum;
     }
 
     /**
@@ -46,7 +59,14 @@ public class LogicsAndNumbersStuff {
     public double averageOfNumber(int[] numbers)
     {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        int[] arr = numbers;
+        double avg = 0;
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum = sum + arr[i];
+        }
+        avg = sum/arr.length;
+        return avg;
     }
 
     /**
@@ -60,7 +80,36 @@ public class LogicsAndNumbersStuff {
     public int numberWithMostOccurrences(int[] numbers)
     {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        int[] arr = numbers;
+        HashMap<Integer, Integer> hashMap = new HashMap<Integer,Integer>();
+        for (int i = 0; i < arr.length; i++) {
+            if(hashMap.containsKey(arr[i])) {
+                hashMap.put(arr[i], hashMap.get(arr[i]) + 1);
+            } else {
+                hashMap.put(arr[i], 1);
+            }
+        }
+        int maxCount = 0;
+        int mostCommon = 0;
+        for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()){
+            if (entry.getValue() > maxCount ||
+                    (entry.getValue() == maxCount &&
+                    appearsFirst(arr, entry.getKey()) < appearsFirst(arr, mostCommon))){
+                maxCount = entry.getValue();
+                mostCommon = entry.getKey();
+            }
+
+        }
+
+        return mostCommon;
+    }
+    private static int appearsFirst(int[] arr, int element){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == element){
+                return i;
+            }
+        }
+        return -1;
     }
 
 }

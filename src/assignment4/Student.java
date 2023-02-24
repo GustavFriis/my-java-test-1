@@ -34,7 +34,10 @@ public class Student
     public Student(int studentId, String name)
     {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        setStudentId(studentId);
+        setName(name);
+        setMultiplier(1.06);
+        setGrade(0);
     }
 
 
@@ -45,7 +48,8 @@ public class Student
     public double getMultiplier()
     {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+
+         return this.getMultiplier();
     }
 
 
@@ -61,7 +65,14 @@ public class Student
     public boolean setMultiplier(double multiplier)
     {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        if (multiplier == 1.08) {
+            return true;
+        } else if (multiplier == 1.06){
+            return true;
+        } else if (multiplier == 1.06 * 1.08){
+            return true;
+        }
+        return false;
     }
 
 
@@ -87,7 +98,23 @@ public class Student
     public boolean setGrade(int grade)
     {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        if (grade == -3 ){
+            return true;
+        } else if (grade == 0) {
+            return true;
+        } else if (grade == 2){
+            return true;
+        } else if (grade == 4 ){
+            return true;
+        } else if (grade == 7){
+            return true;
+        } else if (grade == 10){
+            return true;
+        } else if (grade == 12) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -135,7 +162,8 @@ public class Student
     public int getStudentId()
     {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        setStudentId(this.studentId);
+        return studentId;
     }
 
 
@@ -149,7 +177,10 @@ public class Student
     public boolean setStudentId(int studentId)
     {
         //TODO Delete line below, and implement this method
-        throw new UnsupportedOperationException();
+        if (studentId < 0) {
+            return false;
+        }
+        return true;
     }
 
 }
